@@ -30,6 +30,7 @@
   :root {
     --cream: #f2ebe4;
     --cream-dark: #e8dfd3;
+    --cream-mid: #ede3d4;
     --ink: #1c1612;
     --ink-mid: #2a211a;
     --ink-soft: #5a4d40;
@@ -73,10 +74,7 @@
     font-size: 24px;
     letter-spacing: 0.02em;
   }
-  .nav__menu {
-    display: flex; align-items: center; gap: 40px;
-    list-style: none;
-  }
+  .nav__menu { display: flex; align-items: center; gap: 32px; list-style: none; }
   .nav__link {
     font-family: var(--font-sans);
     font-size: 12px;
@@ -234,14 +232,7 @@
     opacity: 0.65;
   }
 
-  /* INTRO */
-  .intro {
-    padding: 140px 72px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 120px;
-    align-items: center;
-  }
+  /* Common section helpers */
   .section__eyebrow {
     font-family: var(--font-mono);
     font-size: 11px;
@@ -256,6 +247,37 @@
     width: 32px; height: 1px;
     background: var(--accent);
     display: inline-block;
+  }
+  .section__header {
+    display: flex;
+    align-items: baseline;
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+  .section__header-en {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--ink-muted);
+    flex-shrink: 0;
+  }
+  .section__header-jp {
+    font-family: var(--font-jp);
+    font-weight: 500;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 140px 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    align-items: center;
   }
   .intro__title {
     font-family: var(--font-jp);
@@ -419,8 +441,6 @@
     max-width: 540px;
     opacity: 0.88;
   }
-
-  /* Reel progress */
   .reel__progress {
     position: absolute;
     bottom: 40px;
@@ -452,7 +472,6 @@
     color: var(--cream);
     opacity: 0.8;
   }
-
   .reel__hint {
     position: absolute;
     top: 50%;
@@ -472,10 +491,543 @@
   }
   .reel__hint::after {
     content: '';
-    width: 1px;
-    height: 48px;
+    width: 1px; height: 48px;
     background: currentColor;
     animation: scrollLine 2.4s var(--ease) infinite;
+  }
+
+  /* ============================================
+     TOUR PLANS (dark section)
+     ============================================ */
+  .plans {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 140px 72px 120px;
+    position: relative;
+  }
+  .plans__header {
+    display: flex;
+    align-items: baseline;
+    gap: 40px;
+    margin-bottom: 100px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(242, 235, 228, 0.15);
+  }
+  .plans__header-en {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(242, 235, 228, 0.5);
+  }
+  .plans__header-jp {
+    font-family: var(--font-jp);
+    font-weight: 500;
+    font-size: clamp(32px, 3.8vw, 52px);
+    letter-spacing: 0.04em;
+  }
+  .plans__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+  }
+  .plan-card {
+    position: relative;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  .plan-card__number {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 96px;
+    line-height: 1;
+    color: rgba(242, 235, 228, 0.15);
+    margin-bottom: 24px;
+  }
+  .plan-card__duration {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(242, 235, 228, 0.55);
+    margin-bottom: 16px;
+  }
+  .plan-card__title {
+    font-family: var(--font-jp);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    white-space: pre-line;
+  }
+  .plan-card__tagline {
+    font-family: var(--font-jp);
+    font-size: 14px;
+    color: rgba(242, 235, 228, 0.6);
+    margin-bottom: 32px;
+  }
+  .plan-card__features {
+    list-style: none;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(242, 235, 228, 0.12);
+  }
+  .plan-card__features li {
+    font-family: var(--font-jp);
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(242, 235, 228, 0.88);
+    padding: 8px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .plan-card__features li::before {
+    content: '—';
+    color: var(--accent);
+    font-family: var(--font-mono);
+    flex-shrink: 0;
+  }
+  .plan-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+  }
+  .plan-card__price-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(242, 235, 228, 0.45);
+    margin-bottom: 6px;
+  }
+  .plan-card__price {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--cream);
+  }
+  .plan-card__price-unit {
+    font-family: var(--font-jp);
+    font-size: 13px;
+    color: rgba(242, 235, 228, 0.55);
+    margin-left: 4px;
+    font-style: normal;
+  }
+  .plan-card__cta {
+    font-family: var(--font-jp);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    padding: 12px 22px;
+    border: 1px solid rgba(242, 235, 228, 0.5);
+    border-radius: 999px;
+    color: var(--cream);
+    transition: all 0.4s var(--ease);
+  }
+  .plan-card__cta:hover {
+    background: var(--cream);
+    color: var(--ink);
+    border-color: var(--cream);
+  }
+  .plans__footnote {
+    margin-top: 80px;
+    font-family: var(--font-jp);
+    font-size: 13px;
+    color: rgba(242, 235, 228, 0.5);
+    padding-top: 32px;
+    border-top: 1px solid rgba(242, 235, 228, 0.12);
+  }
+
+  /* ============================================
+     SERVICES (tabs: personal / corporate)
+     ============================================ */
+  .services {
+    padding: 140px 0 0;
+    background: var(--cream);
+  }
+  .services__header {
+    padding: 0 72px;
+    margin-bottom: 60px;
+  }
+  .services__tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .services__tab {
+    padding: 28px 40px;
+    font-family: var(--font-jp);
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    transition: color 0.4s var(--ease), background 0.4s var(--ease);
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+  }
+  .services__tab:first-child { border-right: 1px solid var(--border); }
+  .services__tab.active {
+    color: var(--ink);
+  }
+  .services__tab.active::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 2px;
+    background: var(--ink);
+  }
+  .services__panel {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    min-height: 640px;
+  }
+  .services__panel.active { display: grid; }
+  .services__image {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  .services__image-label {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: var(--cream);
+    font-family: var(--font-jp);
+    z-index: 2;
+  }
+  .services__image-label-kicker {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 8px;
+  }
+  .services__image-label-title {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .services__image::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(14,10,7,0) 50%, rgba(14,10,7,0.6) 100%);
+  }
+  .services__list {
+    padding: 80px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+  }
+  .service-item {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .service-item:last-of-type { border-bottom: none; }
+  .service-item__number {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-muted);
+    padding-top: 4px;
+  }
+  .service-item__title {
+    font-family: var(--font-jp);
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .service-item__text {
+    font-family: var(--font-jp);
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--ink-soft);
+  }
+  .services__cta-row {
+    margin-top: 24px;
+  }
+  .services__cta {
+    font-family: var(--font-jp);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--ink);
+    transition: gap 0.3s var(--ease);
+  }
+  .services__cta:hover { gap: 18px; }
+  .services__group-bar {
+    padding: 36px 72px;
+    background: var(--ink);
+    color: rgba(242, 235, 228, 0.85);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin-top: 0;
+  }
+  .services__group-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(242, 235, 228, 0.5);
+    margin-bottom: 6px;
+  }
+  .services__group-text {
+    font-family: var(--font-jp);
+    font-size: 15px;
+    letter-spacing: 0.04em;
+  }
+  .services__group-cta {
+    font-family: var(--font-jp);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    padding: 12px 28px;
+    border: 1px solid rgba(242, 235, 228, 0.6);
+    border-radius: 999px;
+    color: var(--cream);
+    transition: all 0.4s var(--ease);
+    flex-shrink: 0;
+  }
+  .services__group-cta:hover {
+    background: var(--cream);
+    color: var(--ink);
+  }
+
+  /* ============================================
+     VOICE (customer testimonials carousel)
+     ============================================ */
+  .voice {
+    padding: 160px 72px;
+    background: var(--cream-mid);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .voice__header-en {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+  }
+  .voice__header-jp {
+    font-family: var(--font-jp);
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .voice__dots {
+    display: flex;
+    gap: 16px;
+  }
+  .voice__dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 1px solid var(--ink);
+    background: transparent;
+    transition: background 0.3s;
+    cursor: pointer;
+  }
+  .voice__dot.active { background: var(--ink); }
+
+  .voice__carousel {
+    position: relative;
+    min-height: 280px;
+  }
+  .voice__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.6s var(--ease);
+    pointer-events: none;
+  }
+  .voice__slide.active {
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+  }
+  .voice__quote {
+    font-family: var(--font-jp);
+    font-weight: 400;
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 2;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 40px;
+    max-width: 900px;
+  }
+  .voice__attribution {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding-left: 16px;
+    border-left: 1px solid var(--ink-muted);
+  }
+  .voice__name {
+    font-family: var(--font-jp);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .voice__role {
+    font-family: var(--font-jp);
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+
+  /* ============================================
+     HOW IT WORKS
+     ============================================ */
+  .how {
+    padding: 140px 72px;
+  }
+  .how__header {
+    display: flex;
+    align-items: baseline;
+    gap: 40px;
+    margin-bottom: 80px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .how__header-en {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-muted);
+  }
+  .how__header-jp {
+    font-family: var(--font-jp);
+    font-weight: 500;
+    font-size: clamp(32px, 3.8vw, 52px);
+    letter-spacing: 0.04em;
+  }
+  .how__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+  }
+  .step {
+    position: relative;
+    padding-top: 24px;
+  }
+  .step__number {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 72px;
+    line-height: 1;
+    color: rgba(28, 22, 18, 0.12);
+    margin-bottom: 24px;
+  }
+  .step__title {
+    font-family: var(--font-jp);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .step__text {
+    font-family: var(--font-jp);
+    font-size: 14px;
+    line-height: 2;
+    color: var(--ink-soft);
+  }
+
+  /* ============================================
+     FAQ
+     ============================================ */
+  .faq {
+    padding: 140px 72px;
+    background: var(--cream-mid);
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .faq__title-wrap {
+    position: sticky;
+    top: 120px;
+  }
+  .faq__title-en {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+  .faq__title {
+    font-family: var(--font-jp);
+    font-weight: 500;
+    font-size: clamp(32px, 3.8vw, 52px);
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+  .faq__list { border-top: 1px solid var(--border); }
+  .faq__item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq__question {
+    width: 100%;
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-jp);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.3s;
+  }
+  .faq__question:hover { color: var(--accent-dark); }
+  .faq__icon {
+    font-family: var(--font-mono);
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--ink-muted);
+    transition: transform 0.4s var(--ease);
+    flex-shrink: 0;
+    margin-left: 32px;
+  }
+  .faq__item.open .faq__icon { transform: rotate(45deg); }
+  .faq__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--ease);
+  }
+  .faq__answer-inner {
+    padding: 0 0 32px;
+    font-family: var(--font-jp);
+    font-size: 15px;
+    line-height: 2;
+    color: var(--ink-soft);
+    max-width: 720px;
   }
 
   /* PHILOSOPHY */
@@ -566,7 +1118,6 @@
   .contact__cta:hover { background: var(--cream); color: var(--ink); }
   .contact__cta-arrow { display: inline-block; transition: transform 0.4s var(--ease); }
   .contact__cta:hover .contact__cta-arrow { transform: translateX(6px); }
-
   .info-row {
     display: grid;
     grid-template-columns: 140px 1fr;
@@ -631,7 +1182,6 @@
       padding: 8px;
     }
     .nav__toggle span { width: 24px; height: 1px; background: currentColor; }
-
     .side-label { display: none; }
 
     .hero__content { padding: 0 24px 80px; }
@@ -647,7 +1197,6 @@
       gap: 32px;
     }
 
-    /* Disable horizontal scroll on mobile — stack vertically */
     .reel { height: auto !important; background: transparent; }
     .reel__viewport { position: static; height: auto; overflow: visible; }
     .reel__track { flex-direction: column; width: 100%; transform: none !important; }
@@ -656,6 +1205,34 @@
     .reel__hint, .reel__progress { display: none; }
     .reel__jp { font-size: clamp(48px, 12vw, 88px); }
     .reel__numeral { font-size: 40px; }
+
+    .plans { padding: 80px 24px; }
+    .plans__grid { grid-template-columns: 1fr; gap: 80px; }
+    .plans__header { flex-direction: column; gap: 8px; align-items: flex-start; margin-bottom: 60px; }
+
+    .services { padding: 80px 0 0; }
+    .services__header { padding: 0 24px; }
+    .services__panel.active { grid-template-columns: 1fr; }
+    .services__image { min-height: 320px; }
+    .services__list { padding: 60px 24px; }
+    .services__group-bar { padding: 32px 24px; flex-direction: column; align-items: flex-start; gap: 20px; text-align: left; }
+
+    .voice {
+      padding: 80px 24px;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .how { padding: 80px 24px; }
+    .how__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .how__header { flex-direction: column; gap: 8px; align-items: flex-start; margin-bottom: 48px; }
+
+    .faq {
+      padding: 80px 24px;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .faq__title-wrap { position: static; }
 
     .philosophy { padding: 100px 24px; }
     .contact { padding: 100px 24px 48px; }
@@ -668,6 +1245,8 @@
     .hero__kicker { font-size: 10px; }
     .hero__subtitle { font-size: 13px; letter-spacing: 0.18em; }
     .intro__title { font-size: 26px; }
+    .how__grid { grid-template-columns: 1fr; }
+    .plan-card__footer { flex-direction: column; align-items: flex-start; gap: 20px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -687,10 +1266,11 @@
 <nav class="nav" id="nav">
   <a href="#top" class="nav__logo"><em>Minami Aso.</em></a>
   <ul class="nav__menu">
-    <li><a href="#about" class="nav__link">About</a></li>
-    <li><a href="#regions" class="nav__link">Regions</a></li>
-    <li><a href="#philosophy" class="nav__link">Philosophy</a></li>
-    <li><a href="#contact" class="nav__link">Contact</a></li>
+    <li><a href="#regions" class="nav__link">観光スポット</a></li>
+    <li><a href="#plans" class="nav__link">プラン</a></li>
+    <li><a href="#services" class="nav__link">サービス</a></li>
+    <li><a href="#voice" class="nav__link">お客様の声</a></li>
+    <li><a href="#contact" class="nav__link">会社概要</a></li>
     <li><a href="#contact" class="nav__cta">無料相談</a></li>
   </ul>
   <button class="nav__toggle" aria-label="メニュー">
@@ -701,19 +1281,16 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero__bg">
-    <!-- NOTE: 御社撮影の実写真に差し替えてください -->
     <div class="hero__slide active" style="background-image: url('https://images.unsplash.com/photo-1526383908167-3426a4c1c67a?w=2400&q=85&auto=format&fit=crop');"></div>
     <div class="hero__slide" style="background-image: url('https://images.unsplash.com/photo-1520312501384-dbdb83a1cb11?w=2400&q=85&auto=format&fit=crop');"></div>
     <div class="hero__slide" style="background-image: url('https://images.unsplash.com/photo-1755210346132-aecbb8f2c555?w=2400&q=85&auto=format&fit=crop');"></div>
   </div>
   <div class="hero__grain"></div>
-
   <div class="hero__content">
     <div class="hero__kicker">Kumamoto · Miyazaki · Since the 1970s</div>
     <h1 class="hero__title"><em>Minami Aso<span class="dot">.</span></em></h1>
     <p class="hero__subtitle">火の国の、風と水と人をめぐる旅へ。</p>
   </div>
-
   <div class="hero__meta">
     <span>有限会社 南阿蘇観光</span>
     <span>熊本県知事登録 第三種旅行業</span>
@@ -743,7 +1320,6 @@
 <section class="reel" id="reel">
   <div class="reel__viewport">
     <div class="reel__track" id="reelTrack">
-
       <article class="reel__panel">
         <div class="reel__bg" style="background-image: url('https://images.unsplash.com/photo-1526383908167-3426a4c1c67a?w=2600&q=85&auto=format&fit=crop');"></div>
         <div class="reel__content">
@@ -804,9 +1380,7 @@
           </div>
         </div>
       </article>
-
     </div>
-
     <div class="reel__progress">
       <span class="reel__progress-text" id="reelCurrent">01</span>
       <div class="reel__progress-track">
@@ -817,10 +1391,314 @@
   </div>
 </section>
 
+<!-- ============================================
+     TOUR PLANS
+     ============================================ -->
+<section class="plans" id="plans">
+  <header class="plans__header reveal">
+    <span class="plans__header-en"><em>Tour Plans</em></span>
+    <h2 class="plans__header-jp">おすすめ旅行プラン</h2>
+  </header>
+
+  <div class="plans__grid">
+    <article class="plan-card reveal">
+      <div class="plan-card__number">01</div>
+      <div class="plan-card__duration">日帰り / Day Trip</div>
+      <h3 class="plan-card__title">阿蘇日帰りプラン</h3>
+      <p class="plan-card__tagline">草千里・火口・温泉を1日で満喫</p>
+      <ul class="plan-card__features">
+        <li>草千里ヶ浜散策</li>
+        <li>阿蘇山火口見学</li>
+        <li>地元グルメランチ</li>
+        <li>貸切バス手配可</li>
+      </ul>
+      <div class="plan-card__footer">
+        <div>
+          <div class="plan-card__price-label">参考料金</div>
+          <div class="plan-card__price"><em>¥8,000〜</em><span class="plan-card__price-unit">/人</span></div>
+        </div>
+        <a href="#contact" class="plan-card__cta">相談する</a>
+      </div>
+    </article>
+
+    <article class="plan-card reveal">
+      <div class="plan-card__number">02</div>
+      <div class="plan-card__duration">1泊2日 / 2 Days · 1 Night</div>
+      <h3 class="plan-card__title">阿蘇・黒川温泉
+1泊2日</h3>
+      <p class="plan-card__tagline">絶景と湯めぐりをゆっくりと</p>
+      <ul class="plan-card__features">
+        <li>草千里・火口観光</li>
+        <li>黒川温泉宿泊</li>
+        <li>湯めぐり手形付き</li>
+        <li>朝夕食付きプラン</li>
+      </ul>
+      <div class="plan-card__footer">
+        <div>
+          <div class="plan-card__price-label">参考料金</div>
+          <div class="plan-card__price"><em>¥25,000〜</em><span class="plan-card__price-unit">/人</span></div>
+        </div>
+        <a href="#contact" class="plan-card__cta">相談する</a>
+      </div>
+    </article>
+
+    <article class="plan-card reveal">
+      <div class="plan-card__number">03</div>
+      <div class="plan-card__duration">3泊4日 / 4 Days · 3 Nights</div>
+      <h3 class="plan-card__title">九州周遊
+3泊4日</h3>
+      <p class="plan-card__tagline">熊本・宮崎・鹿児島を巡る旅</p>
+      <ul class="plan-card__features">
+        <li>阿蘇・高千穂・霧島</li>
+        <li>貸切バス手配</li>
+        <li>宿泊・食事込み</li>
+        <li>添乗員同行可</li>
+      </ul>
+      <div class="plan-card__footer">
+        <div>
+          <div class="plan-card__price-label">参考料金</div>
+          <div class="plan-card__price"><em>¥68,000〜</em><span class="plan-card__price-unit">/人</span></div>
+        </div>
+        <a href="#contact" class="plan-card__cta">相談する</a>
+      </div>
+    </article>
+  </div>
+
+  <p class="plans__footnote">※料金はあくまで参考価格です。人数・日程・内容によって変動します。</p>
+</section>
+
+<!-- ============================================
+     SERVICES (personal / corporate tabs)
+     ============================================ -->
+<section class="services" id="services">
+  <header class="services__header reveal">
+    <div class="section__eyebrow">Our Services · 02</div>
+    <h2 class="section__header-jp" style="font-size: clamp(32px, 3.8vw, 52px);">旅のすべてを、一社完結で。</h2>
+  </header>
+
+  <div class="services__tabs">
+    <div class="services__tab active" data-tab="personal">個人のお客様</div>
+    <div class="services__tab" data-tab="corporate">法人・団体様</div>
+  </div>
+
+  <!-- Personal -->
+  <div class="services__panel active" data-panel="personal">
+    <div class="services__image" style="background-image: url('https://images.unsplash.com/photo-1755210346132-aecbb8f2c555?w=1800&q=85&auto=format&fit=crop');">
+      <div class="services__image-label">
+        <div class="services__image-label-kicker">For Individuals</div>
+        <div class="services__image-label-title">個人・グループ旅行</div>
+      </div>
+    </div>
+    <div class="services__list">
+      <div class="service-item">
+        <div class="service-item__number"><em>01</em></div>
+        <div>
+          <h4 class="service-item__title">観光・周遊プランの企画</h4>
+          <p class="service-item__text">阿蘇火口・黒川温泉・高千穂峡など。お好みに合わせてルートをカスタマイズします。</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item__number"><em>02</em></div>
+        <div>
+          <h4 class="service-item__title">航空券・ホテル手配</h4>
+          <p class="service-item__text">熊本・宮崎空港からのアクセスもスムーズ。ご予算に合わせた宿泊施設をご提案。</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item__number"><em>03</em></div>
+        <div>
+          <h4 class="service-item__title">体験・アクティビティ手配</h4>
+          <p class="service-item__text">乗馬・草千里トレッキング・温泉めぐりなど、地元ならではの体験を組み合わせます。</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item__number"><em>04</em></div>
+        <div>
+          <h4 class="service-item__title">貸切バス・タクシー手配</h4>
+          <p class="service-item__text">南阿蘇交通の貸切車両で快適に移動。ドライバーが地元案内も兼ねます。</p>
+        </div>
+      </div>
+      <div class="services__cta-row">
+        <a href="#contact" class="services__cta">詳しく相談する <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Corporate -->
+  <div class="services__panel" data-panel="corporate">
+    <div class="services__image" style="background-image: url('https://images.unsplash.com/photo-1520312501384-dbdb83a1cb11?w=1800&q=85&auto=format&fit=crop');">
+      <div class="services__image-label">
+        <div class="services__image-label-kicker">For Corporate</div>
+        <div class="services__image-label-title">法人・団体旅行</div>
+      </div>
+    </div>
+    <div class="services__list">
+      <div class="service-item">
+        <div class="service-item__number"><em>01</em></div>
+        <div>
+          <h4 class="service-item__title">社員旅行・研修旅行</h4>
+          <p class="service-item__text">規模・目的に応じた最適なプランをご提案。視察・研修目的の行程も設計します。</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item__number"><em>02</em></div>
+        <div>
+          <h4 class="service-item__title">修学旅行・教育旅行</h4>
+          <p class="service-item__text">阿蘇のジオパーク学習、防災・地域学習など、学びのある旅を組み立てます。</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item__number"><em>03</em></div>
+        <div>
+          <h4 class="service-item__title">大型バス・団体輸送</h4>
+          <p class="service-item__text">南阿蘇交通と連携し、大型バス複数台の同時運行にも対応。全国からの送迎も可能。</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-item__number"><em>04</em></div>
+        <div>
+          <h4 class="service-item__title">イベント・視察受入</h4>
+          <p class="service-item__text">学会・視察団・インバウンド団体の受入。通訳・ガイドの手配も承ります。</p>
+        </div>
+      </div>
+      <div class="services__cta-row">
+        <a href="#contact" class="services__cta">詳しく相談する <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group company bar -->
+  <div class="services__group-bar">
+    <div>
+      <div class="services__group-label">Group Company</div>
+      <div class="services__group-text">南阿蘇交通の貸切バス・タクシーと完全連携 — 旅行から移動まで一社完結</div>
+    </div>
+    <a href="#contact" class="services__group-cta">お問い合わせ</a>
+  </div>
+</section>
+
+<!-- ============================================
+     CUSTOMER VOICE
+     ============================================ -->
+<section class="voice" id="voice">
+  <div>
+    <div class="voice__header-en"><em>Customer Voice</em></div>
+    <h2 class="voice__header-jp">お客様の声</h2>
+    <div class="voice__dots" id="voiceDots">
+      <button class="voice__dot active" data-idx="0" aria-label="1"></button>
+      <button class="voice__dot" data-idx="1" aria-label="2"></button>
+      <button class="voice__dot" data-idx="2" aria-label="3"></button>
+    </div>
+  </div>
+  <div class="voice__carousel" id="voiceCarousel">
+    <div class="voice__slide active">
+      <p class="voice__quote">「子どもたちが草千里で乗馬を体験でき、大喜びでした。移動のバス手配から宿泊まですべてお任せできて、旅行を楽しむことだけに集中できました。また来年もお願いしたいです。」</p>
+      <div class="voice__attribution">
+        <span class="voice__name">山田 様</span>
+        <span class="voice__role">熊本市・ご家族旅行</span>
+      </div>
+    </div>
+    <div class="voice__slide">
+      <p class="voice__quote">「社員旅行で40名の団体手配をお願いしました。当日の天候で行程を変更してくださるなど、現地のプロならではの判断で本当に助かりました。宿泊先のおもてなしも素晴らしかったです。」</p>
+      <div class="voice__attribution">
+        <span class="voice__name">佐藤 様</span>
+        <span class="voice__role">福岡県・法人団体</span>
+      </div>
+    </div>
+    <div class="voice__slide">
+      <p class="voice__quote">「高齢の両親を連れての旅行でしたが、移動の負担を抑えたスケジュールを丁寧に組んでくださいました。ドライバーさんの心配りも素敵で、家族全員が心から楽しめた3日間になりました。」</p>
+      <div class="voice__attribution">
+        <span class="voice__name">田中 様</span>
+        <span class="voice__role">大阪府・ご家族旅行</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     HOW IT WORKS
+     ============================================ -->
+<section class="how" id="how">
+  <header class="how__header reveal">
+    <span class="how__header-en"><em>How It Works</em></span>
+    <h2 class="how__header-jp">ご相談の流れ</h2>
+  </header>
+  <div class="how__grid">
+    <div class="step reveal">
+      <div class="step__number">01</div>
+      <h3 class="step__title">ご相談</h3>
+      <p class="step__text">お電話・メール・フォームでお気軽にご連絡ください。旅行の目的・日程・人数・ご予算など、何でもご相談ください。</p>
+    </div>
+    <div class="step reveal">
+      <div class="step__number">02</div>
+      <h3 class="step__title">プラン作成</h3>
+      <p class="step__text">ご要望をもとにカスタムプランをご提案。複数のプランをご用意し、ご予算に合わせてご選択いただけます。</p>
+    </div>
+    <div class="step reveal">
+      <div class="step__number">03</div>
+      <h3 class="step__title">ご確認・ご契約</h3>
+      <p class="step__text">プランをご確認いただき、ご納得いただけたら旅行契約を締結。料金の詳細も丁寧にご説明します。</p>
+    </div>
+    <div class="step reveal">
+      <div class="step__number">04</div>
+      <h3 class="step__title">旅行実施</h3>
+      <p class="step__text">当日は安心してお楽しみください。添乗員のご手配や緊急連絡対応も承ります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FAQ
+     ============================================ -->
+<section class="faq" id="faq">
+  <div class="faq__title-wrap">
+    <div class="faq__title-en"><em>FAQ</em></div>
+    <h2 class="faq__title">よくある<br>ご質問</h2>
+  </div>
+  <div class="faq__list">
+    <div class="faq__item">
+      <button class="faq__question">相談・見積もりは無料ですか？<span class="faq__icon">+</span></button>
+      <div class="faq__answer">
+        <div class="faq__answer-inner">はい、ご相談・お見積もりは無料です。ご契約前にご不明点があれば、納得いくまで何度でもご相談ください。</div>
+      </div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question">個人でも手配してもらえますか？<span class="faq__icon">+</span></button>
+      <div class="faq__answer">
+        <div class="faq__answer-inner">もちろんです。ご家族・カップル・お一人様のご旅行も、ご希望に合わせてカスタマイズいたします。1名様からご相談可能です。</div>
+      </div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question">貸切バスは何人から利用できますか？<span class="faq__icon">+</span></button>
+      <div class="faq__answer">
+        <div class="faq__answer-inner">ジャンボタクシー（9名様まで）、マイクロバス（20名様程度）、大型観光バス（45〜50名様）まで、人数に応じた車両をグループ会社・南阿蘇交通より手配します。</div>
+      </div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question">熊本・宮崎以外のエリアも対応可能ですか？<span class="faq__icon">+</span></button>
+      <div class="faq__answer">
+        <div class="faq__answer-inner">はい、九州全域（鹿児島・大分・福岡・長崎・佐賀）まで対応しています。長距離の周遊プランや空港送迎もお任せください。</div>
+      </div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question">旅行の支払い方法は？<span class="faq__icon">+</span></button>
+      <div class="faq__answer">
+        <div class="faq__answer-inner">銀行振込・現金・クレジットカードに対応しています。団体様は請求書払いも承ります。詳細は担当者までお尋ねください。</div>
+      </div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question">旅行中にトラブルが発生した場合は？<span class="faq__icon">+</span></button>
+      <div class="faq__answer">
+        <div class="faq__answer-inner">24時間の緊急連絡体制を整えています。天候不良・交通トラブル・体調不良など、現地のネットワークを活かして即時対応いたします。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PHILOSOPHY -->
 <section class="philosophy" id="philosophy">
   <div class="reveal">
-    <div class="section__eyebrow" style="justify-content: center; display: inline-flex;">Our Philosophy · 02</div>
+    <div class="section__eyebrow" style="justify-content: center; display: inline-flex;">Our Philosophy</div>
     <p class="philosophy__quote">The slower the journey,<br>the deeper <em>the memory.</em></p>
     <div class="philosophy__divider"></div>
     <p class="philosophy__jp">急がない旅は、<br>やがて忘れられない旅になる。</p>
@@ -831,7 +1709,7 @@
 <section class="contact" id="contact">
   <div class="contact__grid">
     <div class="reveal">
-      <div class="section__eyebrow" style="color: rgba(242,235,228,0.55);">Get in Touch · 03</div>
+      <div class="section__eyebrow" style="color: rgba(242,235,228,0.55);">Get in Touch · 会社概要</div>
       <h2 class="contact__title"><em>Let's plan</em><br>your journey.</h2>
       <p class="contact__lead">団体・個人・修学旅行・企業研修・貸切バス運行、どんな規模・目的の旅行でも、まずはお気軽にご相談ください。お見積もりは無料です。</p>
       <a href="mailto:minamiasokotsu@gmail.com" class="contact__cta">
@@ -839,7 +1717,6 @@
         <span class="contact__cta-arrow">→</span>
       </a>
     </div>
-
     <div class="reveal">
       <div class="info-row">
         <div class="info-row__label">Company</div>
@@ -877,10 +1754,9 @@
     const slides = document.querySelectorAll('.hero__slide');
     if (slides.length < 2) return;
     let current = 0;
-    const total = slides.length;
     setInterval(() => {
       slides[current].classList.remove('active');
-      current = (current + 1) % total;
+      current = (current + 1) % slides.length;
       slides[current].classList.add('active');
     }, 6000);
   })();
@@ -922,26 +1798,18 @@
     const fill = document.getElementById('reelFill');
     const currentEl = document.getElementById('reelCurrent');
     if (!reel || !track) return;
-
     const panels = track.querySelectorAll('.reel__panel');
     const panelCount = panels.length;
     let ticking = false;
 
     function update() {
-      if (window.innerWidth <= 960) {
-        track.style.transform = '';
-        return;
-      }
-
+      if (window.innerWidth <= 960) { track.style.transform = ''; return; }
       const rect = reel.getBoundingClientRect();
       const vh = window.innerHeight;
       const scrollable = reel.offsetHeight - vh;
       const progress = Math.max(0, Math.min(1, -rect.top / scrollable));
       const maxTranslate = (panelCount - 1) * window.innerWidth;
-      const translate = progress * maxTranslate;
-
-      track.style.transform = `translate3d(${-translate}px, 0, 0)`;
-
+      track.style.transform = `translate3d(${-progress * maxTranslate}px, 0, 0)`;
       if (fill) fill.style.width = (progress * 100) + '%';
       if (currentEl) {
         const currentPanel = Math.min(panelCount, Math.floor(progress * panelCount) + 1);
@@ -949,23 +1817,76 @@
       }
     }
 
-    function onScroll() {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          update();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(() => { update(); ticking = false; }); ticking = true; }
+    }, { passive: true });
     window.addEventListener('resize', () => {
       if (window.innerWidth <= 960) track.style.transform = '';
       update();
     });
-
     update();
+  })();
+
+  // SERVICES tabs
+  (function() {
+    const tabs = document.querySelectorAll('.services__tab');
+    const panels = document.querySelectorAll('.services__panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === target));
+        panels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+      });
+    });
+  })();
+
+  // VOICE carousel
+  (function() {
+    const slides = document.querySelectorAll('.voice__slide');
+    const dots = document.querySelectorAll('.voice__dot');
+    if (!slides.length) return;
+    let current = 0;
+    let timer;
+
+    function go(idx) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function autoplay() {
+      timer = setInterval(() => go((current + 1) % slides.length), 7000);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer);
+        go(i);
+        autoplay();
+      });
+    });
+    autoplay();
+  })();
+
+  // FAQ accordion
+  (function() {
+    const items = document.querySelectorAll('.faq__item');
+    items.forEach(item => {
+      const q = item.querySelector('.faq__question');
+      const a = item.querySelector('.faq__answer');
+      q.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        if (isOpen) {
+          a.style.maxHeight = '0';
+          item.classList.remove('open');
+        } else {
+          a.style.maxHeight = a.scrollHeight + 'px';
+          item.classList.add('open');
+        }
+      });
+    });
   })();
 
   // Mobile nav toggle
